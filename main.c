@@ -25,7 +25,7 @@ int main(int argc, char* argv[]){
 	ACEInit(400, 400);
 	ACELockMouse();
 
-	ACEScene Scene = ACEMakeSceneEx("ACE/shaders/defvert.glsl", "ACE/shaders/deffrag.glsl", 5);
+	ACEScene Scene = ACEMakeSceneEx("ACE/shaders/defvert.glsl", "ACE/shaders/deffrag.glsl", 0.2, 0.5, 0.9, 5);
 	ACEUseScene(&Scene);
 
 	ACEObject b = ACEMakePrimitive(ACECUBE, &Scene);
@@ -38,7 +38,6 @@ int main(int argc, char* argv[]){
 	ACEUseCamera(&cam);
 
 	Mat4Trans(&b.Model, 0, 0,-1);
-	ACESetBGColor(0.7, 0.8, 0.4);
 	Vec2 PrevMPos = ACEMousePos();
 	const float MSens = 0.01,
 				CamSpeed = 0.02;
