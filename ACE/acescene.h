@@ -26,13 +26,14 @@ typedef struct{
 } ACEObject;
 
 typedef struct{
+	Vec3 BGCol;
 	unsigned int DefaultShader;
 	ACEObject** Objects;
 	int ObjectCount,
 		MaxObjects;
 } ACEScene;
 
-ACEScene ACEMakeSceneEx(const char* defvert, const char* deffrag, int MaxObjects);
+ACEScene ACEMakeSceneEx(const char* defvert, const char* deffrag, float r, float g, float b, int MaxObjects);
 
 ACEMateriel ACEMakeColorMateriel(float r, float g, float b, ACEScene* scene);
 ACEObject ACEMakeObjectEx(float* vertices, int VerticesLength, int* vertformat, int FormatLength, ACEMateriel materiel, Mat4 model);

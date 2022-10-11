@@ -5,8 +5,9 @@
 #include"aceprimitives.h"
 #include"acescene.h"
 
-ACEScene ACEMakeSceneEx(const char* defvert, const char* deffrag, int MaxObjects){
+ACEScene ACEMakeSceneEx(const char* defvert, const char* deffrag, float r, float g, float b, int MaxObjects){
 	ACEScene out;
+	out.BGCol = (Vec3){r, g, b};
 	out.DefaultShader = CreateShaderProgram(defvert, deffrag);
 	out.Objects = malloc(MaxObjects * sizeof(ACEObject*));
 	out.ObjectCount = 0;

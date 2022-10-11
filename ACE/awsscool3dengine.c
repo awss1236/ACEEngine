@@ -100,6 +100,7 @@ void ACEUseCamera(ACECamera* cam){
 }
 
 void ACEUseScene(ACEScene* scene){
+	ACESetBGColor(scene->BGCol.x, scene->BGCol.y, scene->BGCol.z);
 	GlobalACEApp.Scene = scene;
 }
 
