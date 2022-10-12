@@ -4,10 +4,11 @@
 #include"ACE/awsscool3dengine.h"
 
 //Big TODO s:
+//		* Fix weird warping at high vertical angles.
 //		* .obj file loading?
 
 //Current TODO s:
-//		*Version control with git an shit
+//
 
 //Trying to figure out the current structure of ace:
 //
@@ -38,6 +39,7 @@ int main(int argc, char* argv[]){
 	ACEUseCamera(&cam);
 
 	Mat4Trans(&b.Model, 0, 0,-1);
+
 	Vec2 PrevMPos = ACEMousePos();
 	const float MSens = 0.01,
 				CamSpeed = 0.02;

@@ -20,7 +20,8 @@ typedef struct{
 
 typedef struct{
 	unsigned int VertexArray,
-				 VertexCount;
+				 VertexCount,
+				 ID;
 	ACEMateriel Materiel;
 	Mat4 Model;
 } ACEObject;
@@ -40,4 +41,5 @@ ACEObject ACEMakeObjectEx(float* vertices, int VerticesLength, int* vertformat, 
 ACEObject ACEMakeSimpleObject(float* vertices, int VerticesLength, ACEScene* scene);
 ACEObject ACEMakePrimitive(ACEPrimitive prim, ACEScene* scene);
 bool ACEAddObject(ACEObject* obj, ACEScene* scene);
+bool ACERemoveObject(ACEObject* obj, ACEScene* scene);
 void ACERenderObject(ACEObject* obj);

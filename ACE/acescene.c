@@ -1,4 +1,5 @@
 #include<stdlib.h>
+#include<string.h>
 #include<stdio.h>
 
 #include"shaders/shader.h"
@@ -42,7 +43,9 @@ ACEMateriel ACEMakeColorMateriel(float r, float g, float b, ACEScene* scene){
 }
 
 ACEObject ACEMakeObjectEx(float* vertices, int VerticesLength, int* vertformat, int FormatLength, ACEMateriel materiel, Mat4 model){
+	static unsigned int id = 0;
 	ACEObject out;
+	out.ID = id++;
 	//shader and Model
 	out.Materiel = materiel;
 	out.Model  = model;
@@ -111,6 +114,33 @@ bool ACEAddObject(ACEObject* obj, ACEScene* scene){
 		return false;
 	}
 	scene->Objects[scene->ObjectCount++] = obj;
+	return true;
+}
+
+bool ACERemoveObject(ACEObject* obj, ACEScene* scene){
+	int ObjIdx = scene->MaxObjects;
+
+	for(int i=0;i<scene->ObjectCount;i++){
+		if(scene->Objects[i]->ID == obj->ID){
+			ObjIdx = i;
+			break;
+		}
+	}
+
+	if(ObjIdx == scene->MaxObjects){
+		printf("No such object in scene.\n");
+		return false;
+	}
+
+	printf("%d, %d\n", ObjIdx, obj->ID);
+	//Move everything after deleted object pointer back one pointer length
+	void* to   = (void*)(scene->Objects[ObjIdx]);
+	const void* from = (void*)(scene->Objects[ObjIdx + 1]);
+	size_t num  = (scene->ObjectCount - ObjIdx - 1) * sizeof(ACEObject*);
+	memcpy(to, from, num);
+
+	scene->ObjectCount--;
+
 	return true;
 }
 
