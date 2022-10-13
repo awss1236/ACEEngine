@@ -8,7 +8,7 @@
 //		* .obj file loading?
 
 //Current TODO s:
-//
+//		* Assimp?
 
 //Trying to figure out the current structure of ace:
 //
@@ -26,7 +26,7 @@ int main(int argc, char* argv[]){
 	ACEInit(400, 400);
 	ACELockMouse();
 
-	ACEScene Scene = ACEMakeSceneEx("ACE/shaders/defvert.glsl", "ACE/shaders/deffrag.glsl", 0.2, 0.5, 0.9, 5);
+	ACEScene Scene = ACEMakeScene(0.2, 0.5, 0.9, 5);
 	ACEUseScene(&Scene);
 
 	ACEObject b = ACEMakePrimitive(ACECUBE, &Scene);
@@ -40,11 +40,14 @@ int main(int argc, char* argv[]){
 
 	Mat4Trans(&b.Model, 0, 0,-1);
 
+
+	//ACERemoveObject(&b, &Scene);
+
 	Vec2 PrevMPos = ACEMousePos();
 	const float MSens = 0.01,
 				CamSpeed = 0.02;
 	float yaw = 0, pitch = 0;
-	while(!ACEShouldClose()){
+	while(!ACEShouldQuit()){
 		ACERender();
 
 		Vec2 CurMPos = ACEMousePos();

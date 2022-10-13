@@ -19,9 +19,12 @@ All of this is subject to change (although unlikely).
 ACEScenes are just an object array and a default shader (For easier object creation).
 
 #### Creation
-The only current way to create a scene is using:  
+
+To create an ACEScene with a custom shader you can use:  
 `ACEMakeSceneEx(const char*, const char*, float, float, float, int);`  
-It takes two paths to the default vertex and fragment shaders, 3 floats specifying the bgcolor of the scene and the maximum amount of objects (The Ex indicates that a more simplified version of this function is a TODO).
+It takes two paths to the default vertex and fragment shaders, 3 floats specifying the bgcolor of the scene and the maximum amount of objects.  
+Or you can use the default shaders by calling:  
+`ACEMakeScene(float, float, float, int);`
 
 #### Enabling
 ACE allows for more than one scene.  

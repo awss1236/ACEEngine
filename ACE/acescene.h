@@ -35,6 +35,7 @@ typedef struct{
 } ACEScene;
 
 ACEScene ACEMakeSceneEx(const char* defvert, const char* deffrag, float r, float g, float b, int MaxObjects);
+ACEScene ACEMakeScene(float r, float g, float b, int MaxObjects);
 
 ACEMateriel ACEMakeColorMateriel(float r, float g, float b, ACEScene* scene);
 ACEObject ACEMakeObjectEx(float* vertices, int VerticesLength, int* vertformat, int FormatLength, ACEMateriel materiel, Mat4 model);

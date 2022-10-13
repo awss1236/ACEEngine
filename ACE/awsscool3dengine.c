@@ -54,7 +54,7 @@ void ACEClearBG(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-bool ACEShouldClose(){
+bool ACEShouldQuit(){
 	return glfwWindowShouldClose(GlobalACEApp.Window);
 }
 

@@ -16,6 +16,16 @@ ACEScene ACEMakeSceneEx(const char* defvert, const char* deffrag, float r, float
 	return out;
 }
 
+ACEScene ACEMakeScene(float r, float g, float b, int MaxObjects){
+	ACEScene out;
+	out.BGCol = (Vec3){r, g, b};
+	out.DefaultShader = CreateShaderProgram("ACE/shaders/defvert.glsl", "ACE/shaders/deffrag.glsl");
+	out.Objects = malloc(MaxObjects * sizeof(ACEObject*));
+	out.ObjectCount = 0;
+	out.MaxObjects = MaxObjects;
+	return out;
+}
+
 //The verformat takes the shape of an array of number-type pairs.
 //Eg [3, GL_FLOAT, 2, GL_FLOAT] would specify two attribs (a vec3 and vec2).
 //** That was the plan until I realised I'm dumb as shit and so everything is now a float.

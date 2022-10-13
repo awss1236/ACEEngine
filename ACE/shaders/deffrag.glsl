@@ -12,5 +12,5 @@ in vec3 FragNorm;
 in vec2 TexCoords;
 
 void main(){
-	gl_FragColor = vec4(TexCoords.yxy, 1.);
+	gl_FragColor = vec4(Color, 1.);
 }

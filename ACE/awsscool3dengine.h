@@ -21,7 +21,7 @@ typedef struct{
 ACE GlobalACEApp;
 
 int ACEInit(int width, int height);
-bool ACEShouldClose();
+bool ACEShouldQuit();
 void ACEQuit();
 
 bool ACEIsKeyDown(int key);
